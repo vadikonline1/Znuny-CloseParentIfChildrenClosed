@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<otrs_config version="2.0" init="Config">
+    <Setting Name="Ticket::EventModulePost###2000-AutoCloseParentTicket" Required="0" Valid="1">
+        <Description Translatable="1">Automatically close parent ticket when all child tickets are closed.</Description>
+        <Navigation>Core::Event::Ticket</Navigation>
+        <Value>
+            <Hash>
+                <Item Key="Module">Kernel::System::Ticket::Event::AutoCloseParentTicket</Item>
+                <Item Key="Event">TicketStateUpdate</Item>
+                <Item Key="Transaction">1</Item>
+            </Hash>
+        </Value>
+    </Setting>
+
+    <Setting Name="AutoCloseParentTicket::ParentCloseState" Required="0" Valid="1">
+        <Description Translatable="1">State name for closing the parent ticket (default: closed successful).</Description>
+        <Navigation>Core::Ticket</Navigation>
+        <Value>
+            <Item ValueType="String">closed successful</Item>
+        </Value>
+    </Setting>
+
+    <Setting Name="AutoCloseParentTicket::ChildClosedStates" Required="0" Valid="1">
+        <Description Translatable="1">Comma-separated list of state names that indicate a child ticket is closed. Example: closed successful,closed unsuccessful,done</Description>
+        <Navigation>Core::Ticket</Navigation>
+        <Value>
+            <Item ValueType="String">closed successful,closed unsuccessful</Item>
+        </Value>
+    </Setting>
+</otrs_config>

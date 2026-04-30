@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+    <Name>Znuny-AutoClose-Parent-Ticket</Name>
+    <Version>1.0.1</Version>
+    <Vendor>vadikonline1</Vendor>
+    <URL>https://github.com/vadikonline1/Znuny-AutoClose-Parent-Ticket</URL>
+    <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
+    <Description Lang="en">Automatically closes parent ticket when all child tickets are in a closed state. Adds an internal note to the parent ticket with the list of closed children.</Description>
+    <Framework>7.0.x</Framework>
+    <Framework>7.1.x</Framework>
+    <Framework>7.2.x</Framework>
+    <Framework>7.3.x</Framework>
+    <Framework>7.4.x</Framework>
+    <Framework>7.5.x</Framework>
+    <ChangeLog Version="1.0.0" Date="2024-04-30 00:00:00">Initial release.</ChangeLog>
+    <ChangeLog Version="1.0.1" Date="2024-04-30 00:00:00">Fixed LinkList parsing, added configurable states, added automatic article creation.</ChangeLog>
+    <IntroInstall Lang="en" Title="Install Information" Type="pre"><![CDATA[
+        <br/>
+        <b>WELCOME</b>
+        <br/>
+        <br/>
+        You are about to install Znuny-AutoClose-Parent-Ticket.<br/>
+        <br/>
+        <b>What this package does:</b><br/>
+        - When a child ticket is closed, checks if all children of the parent are in a closed state<br/>
+        - If all children are in a closed state, automatically closes the parent ticket<br/>
+        - Adds an internal note to the parent ticket with the list of closed children<br/>
+        <br/>
+        <b>Configuration (SysConfig):</b><br/>
+        - AutoCloseParentTicket::ParentCloseState - State for parent ticket (default: closed successful)<br/>
+        - AutoCloseParentTicket::ChildClosedStates - Comma-separated list of child closed states (default: closed successful,closed unsuccessful)<br/>
+        <br/>
+        ((enjoy))<br/>
+        <br/>
+    ]]></IntroInstall>
+    <IntroUpgrade Lang="en" Title="Upgrade Information" Type="pre"><![CDATA[
+        <br/>
+        <b>Upgrade Information</b>
+        <br/>
+        <br/>
+        Clear the Znuny cache after upgrade:<br/>
+        <tt>bin/znuny.Console.pl Maint::Cache::Delete</tt>
+        <br/>
+    ]]></IntroUpgrade>
+    <Filelist>
+        <File Permission="644" Location="Kernel/Config/Files/XML/ZZAutoCloseParentTicket.xml"></File>
+        <File Permission="644" Location="Kernel/System/Ticket/Event/AutoCloseParentTicket.pm"></File>
+    </Filelist>
+</otrs_package>
